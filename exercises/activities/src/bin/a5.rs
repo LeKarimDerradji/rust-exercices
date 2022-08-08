@@ -20,12 +20,4 @@ fn main() {
             break;
         }
     }
-
-    // Solution 2 with while loop
-    let mut another_int = 1;
-
-    while another_int < 5 {
-        println!("int is equal to: {:?}", another_int);
-        another_int += 1;
-    }
 }
