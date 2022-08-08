@@ -14,10 +14,9 @@ fn main() {
     let mut int = 1;
     loop {
         println!("int is equal to: {:?}", int);
-        if int < 4 {
-            int += 1;
-        } else {
+        if int == 4 {
             break;
         }
+        int += 1;
     }
 }
