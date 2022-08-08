@@ -8,7 +8,18 @@
 // * Use a function to display your last name
 // * Use the println macro to display messages to the terminal
 
+// Notes : 
+// We declare the functions outside main()
+fn display_first_name() {
+    println!("Karim");
+}
+fn display_last_name() {
+    println!("Derradji");
+}
+
 fn main() {
-    println("Karim");
-    println("Derradji");
+    display_first_name();
+    display_last_name();
+
+    println!("Is learning Rust");
 }
