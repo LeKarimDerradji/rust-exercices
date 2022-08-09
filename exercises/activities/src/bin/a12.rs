@@ -20,35 +20,46 @@ enum Color {
     Blue,
     Purple,
     Pink,
-    Green,
+}
+
+impl Color {
+    fn print(&self) {
+        match self {
+            Color::Blue => println!("Color is Blue"),
+            Color::Purple => println!("Color is Purple"),
+            Color::Pink => println!("Color is Pink"),
+        }
+    }
+}
+
+impl Dimensions {
+    fn print(&self) {
+        println!("Height: {:?}", self.height);
+        println!("Width: {:?}", self.width);
+        println!("Depth: {:?}", self.depth);
+    }
 }
 
 struct ShippingBox {
     dimensions: Dimensions,
-    weight: i32,
     color: Color,
+    weight: i32,
+    
 }
 
 impl ShippingBox {
-    fn create_new_box(dimensions: Dimensions, weight: i32, color: Color) -> Self {
+    fn new(dimensions: Dimensions, color: Color, weight: i32) -> Self {
         Self {
             dimensions,
-            weight,
             color,
+            weight,
         }
     }
 
-    fn print_box_characteristics(&self) {
-        println!(
-            "The box dimensions of the box is {:?}cm heigth, {:?}cm width, {:?}cm depth. The box weigths {:?} grams.",
-            &self.dimensions.height, &self.dimensions.width, &self.dimensions.depth, &self.weight
-        );
-        match &self.color {
-            Color::Blue => println!("The box is blue"),
-            Color::Purple => println!("The box is purple"),
-            Color::Pink => println!("The box is pink"),
-            Color::Green => println!("The box is green"),
-        }
+    fn print(&self) {
+        self.dimensions.print();
+        self.color.print();
+        println!("Weight is: {:?}", self.weight);
     }
 }
 
@@ -58,6 +69,7 @@ fn main() {
         width: 33.3,
         depth: 33.3,
     };
-    let magic_box = ShippingBox::create_new_box(dimensions, 22, Color::Blue);
-    ShippingBox::print_box_characteristics(&magic_box);
+    let magic_box = ShippingBox::new(dimensions, Color::Pink, 22);
+
+    magic_box.print();
 }
