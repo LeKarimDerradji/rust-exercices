@@ -17,10 +17,6 @@ struct Person {
     favorite_color: String,
 }
 
-fn print(data: &str) {
-    println!("{:?}", data)
-}
-
 fn main() {
     let persons = vec![
         Person {
@@ -31,7 +27,7 @@ fn main() {
         Person {
             age: 9,
             name: "Bob".to_owned(),
-            favorite_color: "Blue".to_owned(),
+            favorite_color: String::from("Blue"),
         },
         Person {
             age: 11,
@@ -43,7 +39,7 @@ fn main() {
     for person in persons {
         if person.age < 10 {
             println!(
-                "The person's name is: {:?} and their favorite color is: {:?}",
+                "The person's name is: {} and their favorite color is: {}",
                 person.name,
                 person.favorite_color,
             );
