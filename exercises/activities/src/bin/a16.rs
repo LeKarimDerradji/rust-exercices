@@ -18,7 +18,11 @@ struct LockersData {
 
 impl LockersData {
     fn print_datas(&self) {
-        println!("{} got a locker assigned which is: {:?}", self.name, self.locker_assigned)
+        println!("The student name is: {}", self.name);
+        match self.locker_assigned {
+            Some(value) => println!("The number of the locker is: {:?}", value),
+            None => println!("There's no locker assigned to this student."),
+        }
     }
 }
 
