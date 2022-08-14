@@ -88,11 +88,6 @@ fn main() {
         },
     ];
 
-    // Err
-    // Ok
-    // Ok
-    // Err
-
     for employee in employees {
         match print_access(&employee) {
             Err(e) => println!("{}", e),
