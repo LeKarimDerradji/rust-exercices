@@ -21,5 +21,20 @@
 //   may enter the building
 // * Print whether the employee may access the building
 //   * Must use a function that utilizes the question mark operator to do this
+enum Position {
+    Maintenance,
+    Marketing,
+    Manager,
+    LineSupervisor,
+    KitchenStaff,
+    AssemblyTechnician,
+}
 
-fn main() {}
+struct Employee {
+    position: Position,
+    employed: Bool,
+}
+
+fn main() {
+    
+}
