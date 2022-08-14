@@ -22,5 +22,28 @@
 // * Use a match expression to convert the user input into the power state enum
 // * The program should be case-insensitive (the user should be able to type
 //   Reboot, reboot, REBOOT, etc.)
+use std::error::Error;
+
+enum States {
+    Off,
+    Sleep,
+    Reboot,
+    Shutdown,
+    Hibernate,
+}
+
+impl States {
+    fn input_to_state(input: &str) -> Result<States, String> {
+        match input {
+            "off" => Ok(States::Off),
+            "sleep" => Ok(States::Sleep),
+            "reboot" => Ok(States::Reboot),
+            "shutdown" => Ok(States::Shutdown),
+            "hibernate" => Ok(States::Hibernate),
+            _ => Err("Invalid input".to_owned()),
+        }
+    }
+}
+
 
 fn main() {}
