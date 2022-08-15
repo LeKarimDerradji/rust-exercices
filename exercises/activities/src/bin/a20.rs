@@ -22,7 +22,6 @@
 // * Use a match expression to convert the user input into the power state enum
 // * The program should be case-insensitive (the user should be able to type
 //   Reboot, reboot, REBOOT, etc.)
-use std::error::Error;
 use std::io::BufRead;
 
 #[derive(Debug)]
@@ -36,6 +35,7 @@ enum States {
 
 impl States {
     fn input_to_state(input: &str) -> Result<States, String> {
+        let input = input.to_lowercase();
         match input.as_str() {
             "off" => Ok(States::Off),
             "sleep" => Ok(States::Sleep),
@@ -52,7 +52,7 @@ fn main() {
     let mut input = String::new();
     println!("Hi, what action the computer should perform? (Off, Sleep, Reboot, Shutdown, Hibernate): ");
     std::io::BufReader::new(std::io::stdin()).read_line(&mut input).unwrap();
-    println!("{}", &input.to_lowercase());
-    let output = States::input_to_state(&input.to_lowercase());
+    
+    let output = States::input_to_state(&input.trim());
     println!("{:?}", output);
 }
