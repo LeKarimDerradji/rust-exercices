@@ -23,7 +23,9 @@
 // * The program should be case-insensitive (the user should be able to type
 //   Reboot, reboot, REBOOT, etc.)
 use std::error::Error;
+use std::io::BufRead;
 
+#[derive(Debug)]
 enum States {
     Off,
     Sleep,
@@ -35,15 +37,22 @@ enum States {
 impl States {
     fn input_to_state(input: &str) -> Result<States, String> {
         match input {
-            "off" => Ok(States::Off),
-            "sleep" => Ok(States::Sleep),
-            "reboot" => Ok(States::Reboot),
-            "shutdown" => Ok(States::Shutdown),
-            "hibernate" => Ok(States::Hibernate),
+            off => Ok(States::Off),
+            sleep => Ok(States::Sleep),
+            reboot => Ok(States::Reboot),
+            shutdown => Ok(States::Shutdown),
+            hibernate => Ok(States::Hibernate),
             _ => Err("Invalid input".to_owned()),
         }
     }
 }
 
 
-fn main() {}
+fn main() {
+    let mut input = String::new();
+    println!("Hi, what action the computer should perform? (Off, Sleep, Reboot, Shutdown, Hibernate): ");
+    std::io::BufReader::new(std::io::stdin()).read_line(&mut input).unwrap();
+    println!("{}", &input.to_lowercase());
+    let output = States::input_to_state(&input.to_lowercase());
+    println!("{:?}", output);
+}
