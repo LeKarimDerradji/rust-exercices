@@ -36,12 +36,12 @@ enum States {
 
 impl States {
     fn input_to_state(input: &str) -> Result<States, String> {
-        match input {
-            off => Ok(States::Off),
-            sleep => Ok(States::Sleep),
-            reboot => Ok(States::Reboot),
-            shutdown => Ok(States::Shutdown),
-            hibernate => Ok(States::Hibernate),
+        match input.as_str() {
+            "off" => Ok(States::Off),
+            "sleep" => Ok(States::Sleep),
+            "reboot" => Ok(States::Reboot),
+            "shutdown" => Ok(States::Shutdown),
+            "hibernate" => Ok(States::Hibernate),
             _ => Err("Invalid input".to_owned()),
         }
     }
