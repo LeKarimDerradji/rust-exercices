@@ -7,6 +7,7 @@
 // * Use the existing find_user function to locate a user
 // * Use the map function to create the User
 // * Print out the User struct if found, or a "not found" message if not
+use std::io::BufRead;
 
 #[derive(Debug)]
 struct User {
@@ -25,4 +26,10 @@ fn find_user(name: &str) -> Option<i32> {
     }
 }
 
-fn main() {}
+fn main() {
+    let mut input = String::new();
+    println!("What's your name? ");
+    std::io::BufReader::new(std::io::stdin()).read_line(&mut input).unwrap();
+    let user_one = find_user(&input.to_lowercase().trim()).map(|id| User{user_id:id, name: input});
+    println!("{:?}", user_one);
+}
