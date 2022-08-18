@@ -31,4 +31,28 @@ fn concat(first: &str, second: &str) -> String {
     format!("{} {}", first, second)
 }
 
-fn main() {}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_clamp() {
+        assert_eq!(clamp(2, 1, 3), 2, "{}", 1);
+    }
+    #[test]
+    fn test_clamp_2() {
+        assert_eq!(clamp(3, 1, 10), 3, "{}", 1);
+    }
+
+    #[test]
+    fn test_div() {
+        assert_eq!(div(10, 2), Some(5))
+    }
+
+    fn concat() {
+        
+    }
+}
+
+fn main() {
+
+}
