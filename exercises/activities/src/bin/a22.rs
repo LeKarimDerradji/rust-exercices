@@ -48,8 +48,9 @@ mod tests {
         assert_eq!(div(10, 2), Some(5))
     }
 
+    #[test]
     fn concat() {
-        
+        assert_eq!(concat!("he", "llo"), "hello");
     }
 }
 
