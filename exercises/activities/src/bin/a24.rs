@@ -18,7 +18,7 @@ fn main() {
         .collect();
 
     for i in plus_three {
-        println!("{:?}", i);
+        println!("The number left are: {:?}", i);
     }
 
     
