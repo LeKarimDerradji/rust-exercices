@@ -15,39 +15,45 @@
 // * Update your Cargo.toml to include a library file
 // * After moving the functions into modules, try running
 //   `cargo check --bin a26c` to get a listing of required code changes
+mod msg {
+    fn trim(msg: &str) -> &str {
+        msg.trim()
+    }
+    
+    fn capitalize(msg: &str) -> std::borrow::Cow<'_, str> {
+        if let Some(letter) = msg.get(0..1) {
+            format!("{}{}", letter.to_uppercase(), &msg[1..msg.len()]).into()
+        } else {
+            msg.into()
+        }
+    }
+    
+    fn exciting(msg: &str) -> String {
+        format!("{}!", msg)
+    }
 
-fn trim(msg: &str) -> &str {
-    msg.trim()
 }
 
-fn capitalize(msg: &str) -> std::borrow::Cow<'_, str> {
-    if let Some(letter) = msg.get(0..1) {
-        format!("{}{}", letter.to_uppercase(), &msg[1..msg.len()]).into()
-    } else {
-        msg.into()
+pub mod math {
+    pub fn add(lhs: isize, rhs: isize) -> isize {
+        lhs + rhs
+    }
+    pub fn sub(lhs: isize, rhs: isize) -> isize {
+        lhs - rhs
+    }
+    pub fn mul(lhs: isize, rhs: isize) -> isize {
+        lhs * rhs
     }
 }
 
-fn exciting(msg: &str) -> String {
-    format!("{}!", msg)
-}
 
-fn add(lhs: isize, rhs: isize) -> isize {
-    lhs + rhs
-}
-fn sub(lhs: isize, rhs: isize) -> isize {
-    lhs - rhs
-}
-fn mul(lhs: isize, rhs: isize) -> isize {
-    lhs * rhs
-}
 
 fn main() {
     // Part 1: math functions
     let result = {
-        let two_plus_two = add(2, 2);
-        let three = sub(two_plus_two, 1);
-        mul(three, three)
+        let two_plus_two = math::add(2, 2);
+        let three = math::sub(two_plus_two, 1);
+        math::mul(three, three)
     };
 
     // Ensure we have a correct result.
