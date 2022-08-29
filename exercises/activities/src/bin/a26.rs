@@ -8,4 +8,9 @@
 // * (OPTIONAL) Read the documentation section `Formatting and Parsing`
 //   for examples on how to create custom time formats
 
-fn main() {}
+fn main() {
+    use chrono::prelude::*;
+    let utc: DateTime<Utc> = Utc::now();
+
+    println!("{:?}", utc);
+}
