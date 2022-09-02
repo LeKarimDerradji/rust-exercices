@@ -21,13 +21,13 @@
 
 fn main() {
     {
-        use math::{add, mul, sub};
-        use msg::{capitalize, exciting, trim};
+        use activity::math;
+        use activity::msg;
         // Part 1: math functions
         let result = {
-            let two_plus_two = add(2, 2);
-            let three = sub(two_plus_two, 1);
-            mul(three, three)
+            let two_plus_two = math::add(2, 2);
+            let three = math::sub(two_plus_two, 1);
+            math::mul(three, three)
         };
 
         // Ensure we have a correct result.
@@ -37,12 +37,12 @@ fn main() {
         // Part 2: string functions
         let hello = {
             let msg = "hello ";
-            let msg = trim(msg);
-            capitalize(msg)
+            let msg = msg::trim(msg);
+            msg::capitalize(msg)
         };
         let world = {
             let msg = "world";
-            exciting(msg)
+            msg::exciting(msg)
         };
         let msg = format!("{}, {}", hello, world);
 
