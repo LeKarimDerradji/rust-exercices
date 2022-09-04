@@ -22,7 +22,7 @@
 // * Use a match expression to convert the user input into the power state enum
 // * The program should be case-insensitive (the user should be able to type
 //   Reboot, reboot, REBOOT, etc.)
-use std::io::BufRead;
+use std::io;
 
 #[derive(Debug)]
 enum States {
@@ -34,25 +34,42 @@ enum States {
 }
 
 impl States {
-    fn input_to_state(input: &str) -> Result<States, String> {
-        let input = input.to_lowercase();
-        match input.as_str() {
-            "off" => Ok(States::Off),
-            "sleep" => Ok(States::Sleep),
-            "reboot" => Ok(States::Reboot),
-            "shutdown" => Ok(States::Shutdown),
-            "hibernate" => Ok(States::Hibernate),
-            _ => Err("Invalid input".to_owned()),
+    fn input_to_state(state: &str) -> Option<States> {
+        let state = state.trim().to_lowercase();
+        match state.as_str() {
+            "off" => Some(States::Off),
+            "sleep" => Some(States::Sleep),
+            "reboot" => Some(States::Reboot),
+            "shutdown" => Some(States::Shutdown),
+            "hibernate" => Some(States::Hibernate),
+            _ => None,
         }
     }
 }
 
+fn print_power_action(state: States) {
+    use States::*;
+    match state {
+        Off => println!("turning off"),
+        Sleep => println!("sleeping"),
+        Reboot => println!("rebooting"),
+        Shutdown => println!("shutting down"),
+        Hibernate => println!("hibernating"),
+    }
+}
 
 fn main() {
-    let mut input = String::new();
-    println!("Hi, what action the computer should perform? (Off, Sleep, Reboot, Shutdown, Hibernate): ");
-    std::io::BufReader::new(std::io::stdin()).read_line(&mut input).unwrap();
-    
-    let output = States::input_to_state(&input.trim());
-    println!("{:?}", output);
+    let mut buffer = String::new();
+    println!(
+        "Hi, what action the computer should perform? (Off, Sleep, Reboot, Shutdown, Hibernate): "
+    );
+    let user_input_status = io::stdin().read_line(&mut buffer);
+    if user_input_status.is_ok() {
+        match States::input_to_state(&buffer) {
+            Some(state) => print_power_action(state),
+            None => println!("Invalid power state"),
+        } 
+    } else {
+        println!("error reading the input");
+    }
 }
