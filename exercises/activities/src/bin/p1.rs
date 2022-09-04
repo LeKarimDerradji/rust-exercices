@@ -28,5 +28,16 @@
 //   the functionality for that menu in isolation.
 // * A vector is the easiest way to store the bills at stage 1, but a
 //   hashmap will be easier to work with at stages 2 and 3.
+enum Command {
+    Add, 
+    View, 
+    Remove, 
+    Update, 
+    Total,
+}
 
+struct Bill {
+    id: i32,
+    total: i32,
+}
 fn main() {}
