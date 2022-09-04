@@ -66,7 +66,7 @@ fn main() {
     };
     let world = {
         let msg = "world";
-        math::exciting(msg)
+        msg::exciting(msg)
     };
     let msg = format!("{}, {}", hello, world);
 
