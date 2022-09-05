@@ -29,10 +29,10 @@
 // * A vector is the easiest way to store the bills at stage 1, but a
 //   hashmap will be easier to work with at stages 2 and 3.
 enum Command {
-    Add, 
-    View, 
-    Remove, 
-    Update, 
+    Add,
+    View,
+    Remove,
+    Update,
     Total,
 }
 
@@ -41,9 +41,19 @@ struct Bill {
     total: i32,
 }
 
-use std::{io};
-fn main() {
+impl Bill {
+    fn create_bill(id: i32, total: i32) -> Self {
+        Bill {
+            id: id,
+            total: total,
+        }
+    }
 
+    // Should we impl reading function here? 
+}
+
+use std::io;
+fn main() {
     loop {
         let mut buffer = String::new();
         //Sanitize
