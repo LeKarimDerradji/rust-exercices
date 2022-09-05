@@ -46,7 +46,7 @@ fn main() {
 
     loop {
         let mut buffer = String::new();
-        //Sanitrize
+        //Sanitize
         //Error handling
         //Matching the keywords
     }
