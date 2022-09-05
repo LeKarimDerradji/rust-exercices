@@ -40,4 +40,14 @@ struct Bill {
     id: i32,
     total: i32,
 }
-fn main() {}
+
+use std::{io};
+fn main() {
+
+    loop {
+        let mut buffer = String::new();
+        //Sanitrize
+        //Error handling
+        //Matching the keywords
+    }
+}
