@@ -52,10 +52,17 @@ impl Bill {
     // Should we impl reading function here? 
 }
 
-use std::io;
+use std::io::{self, BufReader};
 fn main() {
     loop {
         let mut buffer = String::new();
+        println!(
+        "Menu:2
+        1: Create Bill
+        2: View Bill
+        4: Edit Bill
+        5: Exit Program");
+        let user_input_status = io::stdin().read_line(&mut buffer);
         //Sanitize
         //Error handling
         //Matching the keywords
