@@ -52,10 +52,21 @@ impl Bill {
     // Should we impl reading function here?
 }
 
+
+fn failed_attempt() {
+    let attempt: i32 = 0;
+    println!("invalid output");
+    let attempt = attempt + 1;
+    if attempt == 3 {
+        panic!("Too many attempt, existing the program!");
+    }
+    
+}
+
 use std::io::{self, BufReader};
 fn main() {
     loop {
-        let mut buffer = String::new();
+        let mut input = String::new();
         println!(
         "Menu:
         1: Create Bill
@@ -63,9 +74,17 @@ fn main() {
         4: Edit Bill
         5: Exit Program"
         );
-        io::stdin().read_line(&mut buffer).expect("Failed to read line");
-        println!("user input {:?}", buffer.trim());
-        //Sanitize
+
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        
+        match input.as_str().trim() {
+            "1" => println!("1"),
+            "2" => println!("2"),
+            "3" => println!("3"),
+            "4" => println!("4"),
+            "5" => println!("5"),
+            _ => failed_attempt(),
+        }
         //Error handling
         //Matching the keywords
     }
