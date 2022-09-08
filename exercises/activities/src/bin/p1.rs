@@ -37,19 +37,19 @@ enum Command {
 }
 
 struct Bill {
-    id: i32,
+    name: String,
     total: i32,
 }
 
 impl Bill {
-    fn create_bill(id: i32, total: i32) -> Self {
+    fn create_bill(name: String, total: i32) -> Self {
         Bill {
-            id: id,
+            name: name,
             total: total,
         }
     }
 
-    // Should we impl reading function here? 
+    // Should we impl reading function here?
 }
 
 use std::io::{self, BufReader};
@@ -57,12 +57,14 @@ fn main() {
     loop {
         let mut buffer = String::new();
         println!(
-        "Menu:2
+        "Menu:
         1: Create Bill
         2: View Bill
         4: Edit Bill
-        5: Exit Program");
-        let user_input_status = io::stdin().read_line(&mut buffer);
+        5: Exit Program"
+        );
+        io::stdin().read_line(&mut buffer).expect("Failed to read line");
+        println!("user input {:?}", buffer.trim());
         //Sanitize
         //Error handling
         //Matching the keywords
