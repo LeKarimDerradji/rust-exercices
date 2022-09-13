@@ -48,8 +48,6 @@ impl Bill {
             total: total,
         }
     }
-
-    // Should we impl reading function here?
 }
 
 
@@ -63,8 +61,12 @@ fn failed_attempt() {
     
 }
 
+
+
 use std::io::{self, BufReader};
 fn main() {
+    let mut bills: Vec<Bill> = Vec::new(); 
+
     loop {
         let mut input = String::new();
         println!(
