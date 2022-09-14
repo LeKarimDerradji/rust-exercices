@@ -40,13 +40,14 @@ struct Bill {
     name: String,
     total: i32,
 }
-
+// how to push bills into vec or arrays
 impl Bill {
     fn create_bill(name: String, total: i32) -> Self {
         Bill {
             name: name,
             total: total,
         }
+
     }
 }
 
