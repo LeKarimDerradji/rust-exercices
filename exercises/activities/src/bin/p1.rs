@@ -36,6 +36,20 @@ enum Command {
     Total,
 }
 
+impl Command {
+    fn input_to_command(command: &str) -> Option<Command> {
+        let command = command.trim().to_lowercase();
+        match command.as_str() {
+            "1" => Some(Command::Add),
+            "2" => Some(Command::View),
+            "3" => Some(Command::Remove),
+            "4" => Some(Command::Update),
+            "5" => Some(Command::Total),
+            _ => None,
+        }
+    }
+}
+
 struct Bill {
     name: String,
     total: i32,
@@ -80,14 +94,7 @@ fn main() {
 
         io::stdin().read_line(&mut input).expect("Failed to read line");
         
-        match input.as_str().trim() {
-            "1" => println!("1"),
-            "2" => println!("2"),
-            "3" => println!("3"),
-            "4" => println!("4"),
-            "5" => println!("5"),
-            _ => failed_attempt(),
-        }
+       Command::input_to_command(&input);
         //Error handling
         //Matching the keywords
     }
